@@ -1,0 +1,133 @@
+openapi: "3.0.3"
+info:
+  title: Shortener
+  description: Service for creating short links
+  version: "1.0"
+tags:
+  - name: api
+    description: Endpoints using the REST API.
+servers:
+  - url: "{protocol}://{hostname}"
+    variables:
+      hostname:
+        description: Hotname
+        default: shrt.io
+      protocol:
+        description: Protocol
+        default: https
+paths:
+  /api/create:
+    post:
+      summary: Create short link
+      description: Allows you to create a record about the link in the database.
+      operationId: CreateLink
+      tags:
+        - api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - link
+              properties:
+                link:
+                  type: "string"
+                  description: "URL we are trying to shorten"
+                  example: "https://google.com"
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  link:
+                    type: string
+                    example: "https://shortener.io/eBeSeeSJ"
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Error'
+        404:
+          description: Not found
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Error'
+        401:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Error'
+      security:
+        - apiKey: [ ]
+  /{hash}:
+    get:
+      summary: Retrieve saved link
+      operationId: RetrieveLink
+      parameters:
+        - name: "hash"
+          in: "path"
+          description: "Hash of url to return"
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        301:
+          description: Moved Permanently
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Error'
+        404:
+          description: Not found
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "https:/test.com - invalid url"
+        code:
+          type: integer
+          example: 4
+          enum:
+            - "1 - Token not found"
+            - "2 - Invalid token"
+            - "3 - Service not available"
+            - "4 - Required parameter `url` is not specified"
+            - "5 - Url not found"
+            - "6 - The url has expired"
+            - "7 - Invalid url"
+        status:
+          type: integer
+          example: 400
+          enum:
+            - "400"
+            - "404"
+            - "401"
+            - "498"
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: Authorization jwt-token
