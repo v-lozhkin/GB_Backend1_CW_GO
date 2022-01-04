@@ -9,15 +9,12 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	echoLog "github.com/labstack/gommon/log"
 	"github.com/neko-neko/echo-logrus/v2/log"
+	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/middlewares"
 	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/url"
 	"github.com/sirupsen/logrus"
 )
 
 func App() {
-	startServer()
-}
-
-func startServer() {
 	e := echo.New()
 	// Logger
 	log.Logger().SetOutput(os.Stdout)
@@ -30,7 +27,13 @@ func startServer() {
 	e.Use(middleware.RequestID())
 	e.Use(middleware.Logger())
 
-	e.POST("/api/create", url.Create)
+	secretKey := os.Getenv("APP_SECRET")
+	if secretKey == "" {
+		e.Logger.Fatal("APP_SECRET is not provided")
+	}
+	authMiddleware := middlewares.JWTAuthMiddleware(secretKey)
+
+	e.POST("/api/create", url.Create, authMiddleware)
 
 	port := os.Getenv("PORT")
 	if port == "" {

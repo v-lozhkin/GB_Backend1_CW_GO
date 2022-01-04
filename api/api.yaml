@@ -129,5 +129,5 @@ components:
     apiKey:
       type: apiKey
       in: header
-      name: X-Api-Key
+      name: Authorization
       description: Authorization jwt-token
