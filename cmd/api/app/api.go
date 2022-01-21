@@ -9,13 +9,18 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	echoLog "github.com/labstack/gommon/log"
 	"github.com/neko-neko/echo-logrus/v2/log"
+	echoDelivery "github.com/simonnik/GB_Backend1_CW_GO/internal/app/echo/delivery"
+	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/link/delivery"
+	linkRepo "github.com/simonnik/GB_Backend1_CW_GO/internal/app/link/repository/inmemory"
+	linkUsecase "github.com/simonnik/GB_Backend1_CW_GO/internal/app/link/usecase"
 	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/middlewares"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/url"
 	"github.com/sirupsen/logrus"
 )
 
 func App() {
 	e := echo.New()
+	// changed the error handler
+	e.HTTPErrorHandler = echoDelivery.HTTPErrorHandler
 	// Logger
 	log.Logger().SetOutput(os.Stdout)
 	log.Logger().SetLevel(echoLog.INFO)
@@ -33,7 +38,11 @@ func App() {
 	}
 	authMiddleware := middlewares.JWTAuthMiddleware(secretKey)
 
-	e.POST("/api/create", url.Create, authMiddleware)
+	repository := linkRepo.New()
+	linksUsecase := linkUsecase.New(repository)
+	linksDelivery := delivery.New(linksUsecase)
+
+	e.POST("/api/create", linksDelivery.Create, authMiddleware)
 
 	port := os.Getenv("PORT")
 	if port == "" {
