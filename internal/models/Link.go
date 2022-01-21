@@ -6,8 +6,9 @@ import (
 )
 
 type Link struct {
-	ID   int    `json:"-"`
-	Link string `json:"link"`
+	ID    int    `json:"-"`
+	Link  string `json:"link"`
+	Token string `json:"-"`
 }
 
 func (l Link) Validate() error {

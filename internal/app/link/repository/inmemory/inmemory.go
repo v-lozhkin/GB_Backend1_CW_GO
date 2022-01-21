@@ -5,6 +5,7 @@ import (
 
 	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/link"
 	"github.com/simonnik/GB_Backend1_CW_GO/internal/models"
+	"github.com/simonnik/GB_Backend1_CW_GO/internal/pkg/token"
 )
 
 type inmemory struct {
@@ -14,6 +15,7 @@ type inmemory struct {
 
 func (in *inmemory) Create(_ context.Context, link *models.Link) error {
 	link.ID = in.iterator
+	link.Token = token.GenerateToken()
 	in.iterator++
 
 	in.links = append(in.links, *link)

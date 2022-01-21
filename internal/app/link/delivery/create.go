@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	echoDelivery "github.com/simonnik/GB_Backend1_CW_GO/internal/app/echo/delivery"
 	"github.com/simonnik/GB_Backend1_CW_GO/internal/models"
 )
 
@@ -17,5 +18,5 @@ func (d delivery) Create(ectx echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	return ectx.JSON(http.StatusOK, newLink)
+	return ectx.JSON(http.StatusOK, echoDelivery.Map{"link": "http://localhost:8083/" + newLink.Token})
 }

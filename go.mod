@@ -8,6 +8,7 @@ require (
 	github.com/labstack/gommon v0.3.1
 	github.com/neko-neko/echo-logrus/v2 v2.0.1
 	github.com/sirupsen/logrus v1.8.1
+	github.com/speps/go-hashids/v2 v2.0.1
 )
 
 require (
