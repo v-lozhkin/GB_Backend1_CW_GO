@@ -76,7 +76,7 @@ paths:
       parameters:
         - name: "hash"
           in: "path"
-          description: "Hash of url to return"
+          description: "Hash of link to return"
           required: true
           schema:
             type: integer
@@ -105,7 +105,7 @@ components:
       properties:
         message:
           type: string
-          example: "https:/test.com - invalid url"
+          example: "https:/test.com - invalid link"
         code:
           type: integer
           example: 4
@@ -113,10 +113,10 @@ components:
             - "1 - Token not found"
             - "2 - Invalid token"
             - "3 - Service not available"
-            - "4 - Required parameter `url` is not specified"
+            - "4 - Required parameter `link` is not specified"
             - "5 - Url not found"
-            - "6 - The url has expired"
-            - "7 - Invalid url"
+            - "6 - The link has expired"
+            - "7 - Invalid link"
         status:
           type: integer
           example: 400
