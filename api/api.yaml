@@ -106,25 +106,6 @@ components:
         message:
           type: string
           example: "https:/test.com - invalid link"
-        code:
-          type: integer
-          example: 4
-          enum:
-            - "1 - Token not found"
-            - "2 - Invalid token"
-            - "3 - Service not available"
-            - "4 - Required parameter `link` is not specified"
-            - "5 - Url not found"
-            - "6 - The link has expired"
-            - "7 - Invalid link"
-        status:
-          type: integer
-          example: 400
-          enum:
-            - "400"
-            - "404"
-            - "401"
-            - "498"
   securitySchemes:
     apiKey:
       type: apiKey

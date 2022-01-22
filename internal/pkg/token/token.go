@@ -10,10 +10,10 @@ import (
 // arr := token.GenerateToken()
 //
 // Output: agQIBt7HbD
-func GenerateToken() string {
+func GenerateToken(l int, salt string) string {
 	hd := hashids.NewData()
-	hd.Salt = "this is my salt"
-	hd.MinLength = 7
+	hd.Salt = salt
+	hd.MinLength = l
 	h, _ := hashids.NewWithData(hd)
 	e, _ := h.EncodeInt64(random.RangeInt(0, 100, 4))
 

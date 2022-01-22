@@ -11,8 +11,5 @@ func JWTAuthMiddleware(secret string) echo.MiddlewareFunc {
 		SuccessHandler: nil,
 		SigningKey:     []byte(secret),
 		Claims:         &jwt.StandardClaims{},
-		ErrorHandler: func(err error) error {
-			return err
-		},
 	})
 }
