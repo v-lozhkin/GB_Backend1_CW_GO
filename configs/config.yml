@@ -1,0 +1,6 @@
+host: https://shrt.io
+jwt_secret: badabum
+log_level: debug
+port: 8083
+hash_salt: hahash
+hash_min_length: 7
