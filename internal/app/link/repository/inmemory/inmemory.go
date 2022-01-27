@@ -8,7 +8,7 @@ import (
 )
 
 type inmemory struct {
-	iterator int // race unsafe
+	iterator int64 // race unsafe
 	links    []models.Link
 }
 
