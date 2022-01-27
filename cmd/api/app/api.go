@@ -32,6 +32,7 @@ func App() {
 	e.Use(middleware.Logger())
 
 	configPath := flag.String("configPath", "configs/config.yml", "path yo yaml config")
+	flag.Parse()
 	cfg, err := config.BuildConfig(*configPath)
 	if err != nil {
 		e.Logger.Fatal(err)
