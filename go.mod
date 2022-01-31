@@ -1,5 +1,6 @@
 module github.com/simonnik/GB_Backend1_CW_GO
 
+// +heroku goVersion go1.17
 go 1.17
 
 require (
