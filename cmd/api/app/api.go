@@ -1,10 +1,14 @@
 package app
 
 import (
+	"context"
 	"encoding/json"
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -62,5 +66,21 @@ func App() {
 
 	e.POST("/api/create", linksDelivery.Create, authMiddleware)
 
-	e.Logger.Fatal(e.Start(fmt.Sprintf(":%d", cfg.Port)))
+	go func() {
+		if err := e.Start(fmt.Sprintf(":%d", cfg.Port)); err != nil && err != http.ErrServerClosed {
+			e.Logger.Fatal(err)
+		}
+	}()
+
+	quite := make(chan os.Signal, 1)
+	signal.Notify(quite, syscall.SIGINT, syscall.SIGTERM)
+	<-quite
+	e.Logger.Info("shutdown inited")
+
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
+	defer cancel()
+
+	if err := e.Shutdown(ctx); err != nil {
+		e.Logger.Fatal(err)
+	}
 }
