@@ -82,6 +82,7 @@ func App() {
 	linksDelivery := delivery.New(linksUsecase)
 
 	e.POST("/api/create", linksDelivery.Create, authMiddleware)
+	e.GET("/:token", linksDelivery.Redirect)
 
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%d", cfg.Port)))
 }

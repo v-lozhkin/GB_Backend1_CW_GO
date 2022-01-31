@@ -3,7 +3,7 @@ package inmemory
 import (
 	"context"
 
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/link"
+	linkapp "github.com/simonnik/GB_Backend1_CW_GO/internal/app/link"
 	"github.com/simonnik/GB_Backend1_CW_GO/internal/models"
 )
 
@@ -21,7 +21,17 @@ func (in *inmemory) Create(_ context.Context, link *models.Link) error {
 	return nil
 }
 
-func New() link.Usecase {
+func (in *inmemory) FindByToken(_ context.Context, link models.Link) (*models.Link, error) {
+	for _, lnk := range in.links {
+		if lnk.Token == link.Token {
+			return &lnk, nil
+		}
+	}
+
+	return nil, linkapp.ErrItemNotFound
+}
+
+func New() linkapp.Usecase {
 	return &inmemory{
 		iterator: 1,
 	}
