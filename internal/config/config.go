@@ -11,7 +11,7 @@ import (
 type Config struct {
 	JWTSecret     string `yaml:"jwt_secret" envconfig:"APP_JWT_SECRET"`
 	LogLevel      string `yaml:"log_level" envconfig:"APP_LOG_LEVEL"`
-	Port          int    `yaml:"port" envconfig:"APP_PORT"`
+	Port          int    `yaml:"port" envconfig:"PORT"`
 	HashSalt      string `yaml:"hash_salt" envconfig:"APP_HASH_SALT"`
 	HashMinLength int    `yaml:"hash_min_length" envconfig:"APP_HASH_MIN_LENGTH"`
 	Host          string `yaml:"host" envconfig:"APP_HOST"`
