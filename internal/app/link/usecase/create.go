@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/models"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/models"
 )
 
 func (u usecase) Create(ctx context.Context, link *models.Link) error {

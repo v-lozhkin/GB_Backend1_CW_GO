@@ -15,11 +15,11 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	echoLog "github.com/labstack/gommon/log"
 	"github.com/neko-neko/echo-logrus/v2/log"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/link/delivery"
-	linkRepo "github.com/simonnik/GB_Backend1_CW_GO/internal/app/link/repository/inmemory"
-	linkUsecase "github.com/simonnik/GB_Backend1_CW_GO/internal/app/link/usecase"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/middlewares"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/config"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/app/link/delivery"
+	linkRepo "github.com/v-lozhkin/GB_Backend1_CW_GO/internal/app/link/repository/inmemory"
+	linkUsecase "github.com/v-lozhkin/GB_Backend1_CW_GO/internal/app/link/usecase"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/app/middlewares"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/config"
 	"github.com/sirupsen/logrus"
 )
 

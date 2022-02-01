@@ -3,7 +3,7 @@ package context
 import (
 	"context"
 
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/config"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/config"
 )
 
 type contextCfgKeys struct{}

@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/labstack/echo/v4"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/models"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/models"
 )
 
 type Delivery interface {

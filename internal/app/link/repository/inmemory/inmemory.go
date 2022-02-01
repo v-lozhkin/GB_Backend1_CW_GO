@@ -3,8 +3,8 @@ package inmemory
 import (
 	"context"
 
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/app/link"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/models"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/app/link"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/models"
 )
 
 type inmemory struct {

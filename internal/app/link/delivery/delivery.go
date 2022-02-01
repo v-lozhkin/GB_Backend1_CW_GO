@@ -1,6 +1,6 @@
 package delivery
 
-import "github.com/simonnik/GB_Backend1_CW_GO/internal/app/link"
+import "github.com/v-lozhkin/GB_Backend1_CW_GO/internal/app/link"
 
 type delivery struct {
 	links link.Usecase

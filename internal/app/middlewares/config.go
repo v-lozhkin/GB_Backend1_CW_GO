@@ -2,8 +2,8 @@ package middlewares
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/config"
-	contextUtils "github.com/simonnik/GB_Backend1_CW_GO/internal/pkg/context"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/config"
+	contextUtils "github.com/v-lozhkin/GB_Backend1_CW_GO/internal/pkg/context"
 )
 
 func ConfigMiddleware(cfg config.Config) echo.MiddlewareFunc {

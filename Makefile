@@ -2,7 +2,7 @@
 HAS_LINT := $(shell command -v golangci-lint;)
 HAS_IMPORTS := $(shell command -v goimports;)
 
-PROJECT = github.com/simonnik/GB_Backend1_CW_GO
+PROJECT = github.com/v-lozhkin/GB_Backend1_CW_GO
 GO_PKG = $(shell go list $(PROJECT)/...)
 
 bootstrap:

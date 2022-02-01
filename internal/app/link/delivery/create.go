@@ -5,10 +5,10 @@ import (
 	"strings"
 
 	"github.com/labstack/echo/v4"
-	echoDelivery "github.com/simonnik/GB_Backend1_CW_GO/internal/app/echo/delivery"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/models"
-	contextUtils "github.com/simonnik/GB_Backend1_CW_GO/internal/pkg/context"
-	"github.com/simonnik/GB_Backend1_CW_GO/internal/pkg/token"
+	echoDelivery "github.com/v-lozhkin/GB_Backend1_CW_GO/internal/app/echo/delivery"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/models"
+	contextUtils "github.com/v-lozhkin/GB_Backend1_CW_GO/internal/pkg/context"
+	"github.com/v-lozhkin/GB_Backend1_CW_GO/internal/pkg/token"
 )
 
 func (d delivery) Create(ectx echo.Context) error {
